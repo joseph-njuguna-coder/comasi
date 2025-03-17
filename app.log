@@ -1,0 +1,58 @@
+2025-02-22 02:31:13,108 - WARNING -  * Debugger is active!
+2025-02-22 02:31:13,110 - INFO -  * Debugger PIN: 968-362-537
+2025-02-22 02:31:46,349 - ERROR - Unexpected error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-02-22 02:31:46,357 - INFO - 100.115.92.25 - - [22/Feb/2025 02:31:46] "[35m[1mOPTIONS /verify_token HTTP/1.1[0m" 500 -
+2025-02-22 02:34:37,283 - ERROR - Unexpected error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-02-22 02:34:37,304 - INFO - 100.115.92.25 - - [22/Feb/2025 02:34:37] "[35m[1mOPTIONS /verify_token HTTP/1.1[0m" 500 -
+2025-02-22 02:35:34,127 - ERROR - Unexpected error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-02-22 02:35:34,170 - INFO - 100.115.92.25 - - [22/Feb/2025 02:35:34] "[35m[1mOPTIONS /verify_token HTTP/1.1[0m" 500 -
+2025-02-22 02:42:51,892 - ERROR - Unexpected error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-02-22 02:42:51,912 - INFO - 100.115.92.25 - - [22/Feb/2025 02:42:51] "[35m[1mOPTIONS /verify_token HTTP/1.1[0m" 500 -
+2025-02-22 02:43:25,163 - INFO -  * Detected change in '/home/jnjugunam8/comasi/firebase-biometric-login/app.py', reloading
+2025-02-22 02:43:29,880 - WARNING -  * Debugger is active!
+2025-02-22 02:43:29,909 - INFO -  * Debugger PIN: 968-362-537
+2025-02-22 02:43:50,518 - ERROR - Unexpected error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-02-22 02:43:50,532 - INFO - 100.115.92.25 - - [22/Feb/2025 02:43:50] "[35m[1mOPTIONS /verify_token HTTP/1.1[0m" 500 -
+2025-02-22 02:53:41,255 - INFO -  * Detected change in '/home/jnjugunam8/comasi/firebase-biometric-login/app.py', reloading
+2025-02-22 02:53:43,159 - WARNING -  * Debugger is active!
+2025-02-22 02:53:43,160 - INFO -  * Debugger PIN: 968-362-537
+2025-02-22 02:54:00,520 - ERROR - Unexpected error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-02-22 02:54:01,005 - INFO - 100.115.92.25 - - [22/Feb/2025 02:54:01] "[35m[1mOPTIONS /verify_token HTTP/1.1[0m" 500 -
+2025-02-22 02:54:14,816 - ERROR - Unexpected error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-02-22 02:54:14,830 - INFO - 100.115.92.25 - - [22/Feb/2025 02:54:14] "[35m[1mOPTIONS /verify_token HTTP/1.1[0m" 500 -
+2025-02-22 04:00:23,358 - ERROR - Unexpected error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-02-22 04:00:23,690 - INFO - 100.115.92.25 - - [22/Feb/2025 04:00:23] "[35m[1mOPTIONS /verify_token HTTP/1.1[0m" 500 -
+2025-02-22 04:55:57,649 - ERROR - Unexpected error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-02-22 04:55:57,672 - INFO - 100.115.92.25 - - [22/Feb/2025 04:55:57] "[35m[1mOPTIONS /verify_token HTTP/1.1[0m" 500 -
+2025-02-22 05:30:34,515 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://100.115.92.201:5000
+2025-02-22 05:30:34,516 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-22 05:30:34,518 - INFO -  * Restarting with stat
+2025-02-22 05:30:35,583 - WARNING -  * Debugger is active!
+2025-02-22 05:30:35,587 - INFO -  * Debugger PIN: 968-362-537
+2025-02-26 23:27:15,547 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://100.115.92.201:5000
+2025-02-26 23:27:15,557 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-26 23:27:15,567 - INFO -  * Restarting with stat
+2025-02-26 23:27:16,532 - WARNING -  * Debugger is active!
+2025-02-26 23:27:16,544 - INFO -  * Debugger PIN: 968-362-537
+2025-03-07 10:42:23,799 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://100.115.92.201:5000
+2025-03-07 10:42:23,810 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-07 10:42:23,825 - INFO -  * Restarting with stat
+2025-03-07 10:42:25,403 - WARNING -  * Debugger is active!
+2025-03-07 10:42:25,405 - INFO -  * Debugger PIN: 968-362-537
+2025-03-13 12:36:57,677 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://100.115.92.201:5000
+2025-03-13 12:36:57,680 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-13 12:36:57,683 - INFO -  * Restarting with stat
+2025-03-13 12:37:00,620 - WARNING -  * Debugger is active!
+2025-03-13 12:37:00,643 - INFO -  * Debugger PIN: 968-362-537

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comasi Biometrics/title>
+    
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* Background Gradient */
+        body {
+            background: linear-gradient(to right, #141E30, #243B55);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Glassmorphic Login Card */
+        .login-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Button Styling */
+        .btn-custom {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom i {
+            margin-right: 10px;
+        }
+
+        .btn-google {
+            background-color: #db4437;
+            color: white;
+        }
+
+        .btn-google:hover {
+            background-color: #b0301b;
+        }
+
+        .btn-biometric {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-biometric:hover {
+            background-color: #218838;
+        }
+
+        .btn-logout {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-logout:hover {
+            background-color: #b52a3a;
+        }
+
+        /* Status Message */
+        .status-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="login-card shadow-lg">
+                    <h2 class="mb-3">🔥 Firebase comasi login</h2>
+                    <p class="text-light">Secure login using Google or Biometrics</p>
+                    
+                    <button class="btn btn-custom btn-google" onclick="googleSignIn()">
+                        <i class="fab fa-google"></i> Sign in with Google
+                    </button>
+
+                    <button class="btn btn-custom btn-biometric" onclick="startBiometricAuth()">
+                        <i class="fas fa-fingerprint"></i> Sign in with Biometrics
+                    </button>
+
+                    <button class="btn btn-custom btn-logout" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+
+                    <div class="status-box" id="status">Not logged in.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBg2f8nnKYSCjoA4xaosLHedybqYogH42o",
+            authDomain: "jeym-94111.firebaseapp.com",
+            projectId: "jeym-94111",
+            storageBucket: "jeym-94111.firebasestorage.app",
+            messagingSenderId: "988885293563",
+            appId: "1:988885293563:web:da21fbf0c7b6128d04d35e",
+            measurementId: "G-1EMHDTVLFY"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.getElementById("status").innerText = `Logged in as: ${user.email}`;
+                sendTokenToBackend(user);
+            } else {
+                document.getElementById("status").innerText = "Not logged in.";
+            }
+        });
+
+        async function googleSignIn() {
+            try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                sendTokenToBackend(user);
+            } catch (error) {
+                document.getElementById('status').innerText = `Error: ${error.message}`;
+            }
+        }
+
+        async function sendTokenToBackend(user) {
+            try {
+                const idToken = await user.getIdToken();
+                const response = await fetch('http://100.115.92.201:5000/verify_token', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ idToken })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    document.getElementById('status').innerText = `Login Successful! Welcome, ${data.user.name || "User"}`;
+                } else {
+                    document.getElementById('status').innerText = `Authentication Failed: ${data.error}`;
+                }
+            } catch (error) {
+                document.getElementById('status').innerText = `Error: ${error.message}`;
+            }
+        }
+
+        async function startBiometricAuth() {
+            try {
+                const email = prompt("Enter your email:");
+                if (!email) return alert("Email is required.");
+
+                const challengeResponse = await fetch('http://100.115.92.201:5000/generate_challenge', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+
+                const challengeData = await challengeResponse.json();
+                if (!challengeData.success) throw new Error(challengeData.error);
+
+                const challenge = Uint8Array.from(atob(challengeData.challenge), c => c.charCodeAt(0));
+
+                const credential = await navigator.credentials.get({
+                    publicKey: {
+                        challenge: challenge,
+                        allowCredentials: [],
+                        timeout: 60000,
+                        userVerification: "preferred"
+                    }
+                });
+
+                const credentialData = {
+                    id: credential.id,
+                    challenge: challengeData.challenge
+                };
+
+                const biometricResponse = await fetch('http://100.115.92.201:5000/verify_biometric', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, credentialResponse: credentialData })
+                });
+
+                const biometricData = await biometricResponse.json();
+                if (biometricData.success) {
+                    document.getElementById('status').innerText = `Biometric Login Successful! Welcome, ${biometricData.user_id}`;
+                } else {
+                    document.getElementById('status').innerText = `Biometric Authentication Failed: ${biometricData.error}`;
+                }
+
+            } catch (error) {
+                document.getElementById('status').innerText = `Biometric Error: ${error.message}`;
+            }
+        }
+
+        function logout() {
+            signOut(auth).then(() => {
+                document.getElementById('status').innerText = "Logged out.";
+            }).catch(error => {
+                document.getElementById('status').innerText = `Logout Error: ${error.message}`;
+            });
+        }
+
+        window.googleSignIn = googleSignIn;
+        window.logout = logout;
+        window.startBiometricAuth = startBiometricAuth;
+    </script>
+
+</body>
+</html>
